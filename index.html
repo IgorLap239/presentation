@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>reveal.js</title>
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3>{<a href="https://lodash.com/">Lodash</a>}</h3>
+          <aside class="notes">
+            Introduce yourself and voice the topic of the presentation
+          </aside>
+        </section>
+        <section>
+          <h2>What is <a href="https://lodash.com/">Lodash</a>?</h2>
+          <p class="description">
+            <a href="https://lodash.com/">Lodash</a> - this JS library helps in working with arrays of objects, strings, numbers, etc. taking on the main part of the work. The library contains a lot of ready-made solutions for calculations or data enumeration.
+          </p>
+          <p>Documentation: <a href="https://lodash.com/"></a>https://lodash.com/</p>
+          <aside class="notes">
+            You can see the link to the Lodash documentation on this slide
+          </aside>
+        </section>
+        <section id="fragments">
+          <h2>Why study <a href="https://lodash.com/">Lodash</a>?</h2>
+          <p class="fragment">1. Using library methods will help you write more reliable and neat code which will have fewer bottlenecks.</p>
+          <p class="fragment">2. It is woth learning <a href="https://lodash.com/">Lodash</a> to understand the code already written</p>
+          <p class="fragment">3. <a href="https://lodash.com/">Lodash</a> is sometimes listed in job requirements</p>
+          <p class="fragment">4. Using <a href="https://lodash.com/">Lodash</a> is considered good coding practice</p>
+          <aside class="notes">
+            Slide about the benefits of learning Lodash
+          </aside>
+        </section>
+        <section>
+          <h2>The first method to connect <a href="https://lodash.com/">Lodash</a> to your project</h2>
+          <p class="description">
+            Adding script file to project directory and html code
+          </p>
+          <img src="./assets/pasted-from-clipboard.png" alt="" width="500px" height="300px">
+          <aside class="notes">
+            The first option – download the script file, add it to the project folder next to html file. 
+          </aside>
+        </section>
+        <section>
+          <section data-auto-animate>
+            <h2 data-id="code-title">The second method to connect <a href="https://lodash.com/">Lodash</a> to your project</h2>
+            <p class="description">
+              Using npm:
+            </p>
+            <pre data-id="code-animation"><code class="hljs"><script type="text/template">
+              $ npm i -g npm
+              $ npm i --save lodash
+            </script></code></pre>
+            <aside class="notes">
+              Install Lodash as package 
+            </aside>
+          </section>
+          <section data-auto-animate>
+            <p class="description">
+              In Node.js:
+            </p>
+            <pre data-id="code-animation"><code class="hljs"><script type="text/template">
+              // Load the full build.
+              var _ = require('lodash');
+              // Load the core build.
+              var _ = require('lodash/core');
+              // Load the FP build for immutable auto-curried iteratee-first data-last methods.
+              var fp = require('lodash/fp');
+              
+              // Load method categories.
+              var array = require('lodash/array');
+              var object = require('lodash/fp/object');
+              
+              // Cherry-pick methods for smaller browserify/rollup/webpack bundles.
+              var at = require('lodash/at');
+              var curryN = require('lodash/fp/curryN');
+            </script></code></pre>
+            <aside class="notes">
+              Install Lodash as package 
+            </aside>
+          </section>
+        </section>
+        <section data-auto-animate>
+          <h2 data-id="code-title">Basic examples</h2>
+          <pre data-id="code-animation"><code class="hljs"><script type="text/template">
+            _.compact([0, 1, false, 2, '', 3]);
+            // => [1, 2, 3]
+
+            _.chunk(['a', 'b', 'c', 'd'], 3);
+            // => [['a', 'b', 'c'], ['d']]
+
+            _.difference([2, 1], [2, 3]);
+            // => [1]
+
+            _.flattenDeep([1, [2, [3, [4]], 5]]);
+            // => [1, 2, 3, 4, 5]
+          </script></code></pre>
+          <aside class="notes">
+            It’s worth mentioning that many functions that were originally a defining feature of Lodash have since appeared in the new standards ES5, ES6. But Lodash library is still relevant today, because it has some function definitions for which there are no similar alternatives in the current standard.  
+          </aside>
+        </section>
+        <section>
+          <section data-auto-animate>
+            <h2 data-id="code-title">Alternative use of the methods added to the ES standart</h2>
+            <p class="description">
+              forEach method
+            </p>
+            <pre data-id="code-animation"><code class="hljs"><script type="text/template">
+              // forEach method examples
+              _.forEach([1, 2], function(value) {
+                console.log(value);
+              });
+              // => Logs `1` then `2`.
+
+              _.forEach({ 'a': 1, 'b': 2 }, function(value, key) {
+                console.log(key);
+              });
+              // => Logs 'a' then 'b' (iteration order is not guaranteed).
+            </script></code></pre>
+            <aside class="notes">
+              Slide about "forEach" 
+            </aside>
+          </section>
+          <section data-auto-animate>
+            <p class="description">
+              map method
+            </p>
+            <pre data-id="code-animation"><code class="hljs"><script type="text/template">
+              // map method examples
+              function square(n) {
+                return n * n;
+              }
+              
+              _.map([4, 8], square);
+              // => [16, 64]
+              
+              _.map({ 'a': 4, 'b': 8 }, square);
+              // => [16, 64] (iteration order is not guaranteed)
+              
+              var users = [
+                { 'user': 'barney' },
+                { 'user': 'fred' }
+              ];
+              
+              // The `_.property` iteratee shorthand.
+              _.map(users, 'user');
+              // => ['barney', 'fred']
+            </script></code></pre>
+            <aside class="notes">
+              Slide about "map" 
+            </aside>
+          </section>
+        </section>
+        <section>
+          <h2>Conclusion</h2>
+          <p>In conclusion, <a href="https://lodash.com/">Lodash</a> library is a time-tested, comprehensible instrument which has been helping thousands of programmers write better code</p>
+          <p><a href="https://lodash.com/">Lodash</a> provides out-of-the-box solutions that allow you to write code faster and minimize the possibility of errors, since you do not need to write these methods yourself.</p>
+          <aside class="notes">
+            Author's Conclusion
+          </aside>
+        </section>
+        <section>
+          <div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+            <h2>Thank You</h2>
+            <p>I am very much grateful to you for your patience , Thanks for your Time.</p>
+            <small>Created by <a href="https://github.com/IgorLap239">Igor Laptev</a></small>
+          </div>
+          <aside class="notes">
+            Final slide
+          </aside>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+      });
+    </script>
+  </body>
+</html>
